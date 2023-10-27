@@ -41,14 +41,14 @@ class OrderItemView(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
 
-    permission_classes = [IsAuthenticatedOrReadOnly | IsManagerUser]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class OrderView(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
-    permission_classes = [IsAuthenticatedOrReadOnly | IsManagerUser]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_destroy(self, instance):
         order_items = OrderItem.objects.filter(order=instance)
