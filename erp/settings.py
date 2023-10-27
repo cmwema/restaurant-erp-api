@@ -16,7 +16,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "f8ad-41-89-160-14.ngrok-free.app"
+    'jcb.onrender.com'
 ]
 
 
