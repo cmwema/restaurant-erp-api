@@ -22,7 +22,6 @@ from core.models.review import Review
 class ReviewView(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class TableView(viewsets.ModelViewSet):
     queryset = Table.objects.all()
@@ -41,14 +40,11 @@ class OrderItemView(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
 
-    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class OrderView(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-
-    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_destroy(self, instance):
         order_items = OrderItem.objects.filter(order=instance)
