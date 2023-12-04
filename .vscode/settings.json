@@ -3,5 +3,7 @@
         "activityBar.background": "#281F74",
         "titleBar.activeBackground": "#382BA3",
         "titleBar.activeForeground": "#FBFBFE"
-    }
+    },
+    "appService.defaultWebAppToDeploy": "/subscriptions/1fa0424d-61bb-4884-b631-100d20f5ed15/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/jcbbbq",
+    "appService.deploySubpath": "."
 }

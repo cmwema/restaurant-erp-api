@@ -6,6 +6,9 @@ pip install -r requirements.txt
 
 python manage.py migrate
 
+# create user groups
+python manage.py create_user_groups
+
 python manage.py shell <<EOF
 from django.contrib.auth.models import User
 

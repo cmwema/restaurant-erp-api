@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from users.permissions import IsManagerUser
 
 from core.serializers.ProductSerializer import ProductSerializer
@@ -22,7 +22,7 @@ from core.models.review import Review
 class ReviewView(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [ AllowAny]
 
 class TableView(viewsets.ModelViewSet):
     queryset = Table.objects.all()
@@ -40,15 +40,12 @@ class ProductView(viewsets.ModelViewSet):
 class OrderItemView(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
-
-    permission_classes = [IsAuthenticatedOrReadOnly | IsManagerUser]
-
+    permission_classes = [AllowAny]
 
 class OrderView(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-
-    permission_classes = [IsAuthenticatedOrReadOnly | IsManagerUser]
+    permission_classes = [AllowAny]
 
     def perform_destroy(self, instance):
         order_items = OrderItem.objects.filter(order=instance)
