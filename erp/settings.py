@@ -13,14 +13,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-j#*kx0ic%jmy^ndp#ncr*i2t!vqx@g_j5a2b9d=&tn&2+*6jpv"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ["127.0.0.1", "jcbbbq.azurewebsites.net"]
 
 CORS_ORIGIN_ALLOW_ALL = True
-
 
 
 # Application definition
@@ -41,6 +38,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -117,6 +115,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = "/image/download/"
 MEDIA_ROOT = BASE_DIR
