@@ -42,3 +42,6 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse("Product_detail", kwargs={"pk": self.pk})
+    
+    def total_orders(self):
+        return sum(order_item.quantity for order_item in self.orderitem_set.all())

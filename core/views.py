@@ -12,6 +12,9 @@ from core.serializers.OrderSerializer import OrderSerializer
 from core.serializers.table import TableSerializer
 from core.serializers.Reviewserializer import ReviewSerializer
 
+
+from django.db.models import Sum
+
 from core.models.Product import Product
 from core.models.OrderItem import OrderItem
 from core.models.Order import Order
@@ -19,10 +22,12 @@ from core.models.Category import Category
 from core.models.table import Table
 from core.models.review import Review
 
+
 class ReviewView(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-    permission_classes = [ AllowAny]
+    permission_classes = [AllowAny]
+
 
 class TableView(viewsets.ModelViewSet):
     queryset = Table.objects.all()
@@ -31,7 +36,9 @@ class TableView(viewsets.ModelViewSet):
 
 
 class ProductView(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.annotate(
+        total_orders=Sum("orderitem__quantity")
+    ).order_by("-total_orders")
     serializer_class = ProductSerializer
     parser_classes = [MultiPartParser, FormParser]
     permission_classes = [IsAuthenticatedOrReadOnly | IsManagerUser]
@@ -41,6 +48,7 @@ class OrderItemView(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
     permission_classes = [AllowAny]
+
 
 class OrderView(viewsets.ModelViewSet):
     queryset = Order.objects.all()
