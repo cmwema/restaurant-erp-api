@@ -9,6 +9,7 @@ RATINGS = [
     (5, 5),
 ]
 
+
 class Review(models.Model):
     comment = models.TextField()
     rating = models.IntegerField(choices=RATINGS)

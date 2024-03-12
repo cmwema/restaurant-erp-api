@@ -4,12 +4,14 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from core.models.Category import Category
 
+
 def generate_image_filename(instance, filename):
     extension = filename.split('.')[-1]
     
     new_filename = f"product_{instance.id}.{extension}"
 
     return os.path.join("uploads/products/", new_filename)
+
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
