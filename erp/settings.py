@@ -19,7 +19,12 @@ SECRET_KEY = "django-insecure-j#*kx0ic%jmy^ndp#ncr*i2t!vqx@g_j5a2b9d=&tn&2+*6jpv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "jcbbbq.azurewebsites.net", "jcb.onrender.com"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "jcbbbq.azurewebsites.net",
+    "jcb.onrender.com",
+    ".vercel.app",
+]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
