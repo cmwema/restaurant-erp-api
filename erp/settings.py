@@ -22,7 +22,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "jcbbbq.azurewebsites.net",
-    "jcb.onrender.com",
+    ".onrender.com",
     ".vercel.app",
 ]
 
